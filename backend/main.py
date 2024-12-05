@@ -16,6 +16,10 @@ settings = Settings()
 app = FastAPI()
 
 
+
+
+
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[settings.vite_url],  
@@ -23,6 +27,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
 
 # Define the request schema
 class PipelineData(BaseModel):
