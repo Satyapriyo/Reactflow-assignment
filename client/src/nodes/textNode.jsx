@@ -32,7 +32,7 @@ export const TextNode = ({ id, data }) => {
   useEffect(() => {
     autoResize();
     detectVariables(currText);
-  }, []);
+  }, [currText]);
 
   return (
     <div
@@ -59,7 +59,8 @@ export const TextNode = ({ id, data }) => {
       </div>
       {variables.map((variable, index) => (
         <Handle
-          id={`${id}-input`}
+          key={index}
+          id={`${id}-${variable}`}
           style={{
             backgroundColor: "white",
             width: "14px",
@@ -70,12 +71,10 @@ export const TextNode = ({ id, data }) => {
           }}
           type="target"
           position={Position.Left}
-          isConnectable={true}
         >
           <span className="-ml-14 relative -top-5">{variable}</span>
         </Handle>
       ))}
-
       <Handle
         style={{
           backgroundColor: "white",
