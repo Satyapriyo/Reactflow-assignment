@@ -59,8 +59,8 @@ export const TextNode = ({ id, data }) => {
       </div>
       {variables.map((variable, index) => (
         <Handle
-          key={index}
-          id={`${id}-${variable}`}
+          key={variable}
+          id={`${id}-text`}
           style={{
             backgroundColor: "white",
             width: "14px",

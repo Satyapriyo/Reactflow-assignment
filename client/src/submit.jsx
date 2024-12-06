@@ -1,9 +1,9 @@
 import { useStore } from "./store";
-
+import toast, { Toaster } from "react-hot-toast";
 export const SubmitButton = () => {
   const nodes = useStore((state) => state.nodes);
   const edges = useStore((state) => state.edges);
-
+  const url = import.meta.env.VITE_API_URL;
   const handleSubmit = async () => {
     const payload = {
       nodes: nodes,
@@ -11,7 +11,7 @@ export const SubmitButton = () => {
     };
 
     try {
-      const response = await fetch("http://localhost:8000/pipelines/parse", {
+      const response = await fetch(`${url}/pipelines/parse`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -25,10 +25,20 @@ export const SubmitButton = () => {
 
       const result = await response.json();
       console.log("Result from backend:", result);
-      alert(`Nodes: ${result.num_nodes}, Edges: ${result.num_edges}, Is DAG: ${result.is_dag}`);
+
+      toast.success(`No. of Nodes ${result.num_nodes} , No. of Edges ${result.num_edges} , DAG ${result.is_dag}`,{duration:4000})
+      // toast(
+      //   `No. of Nodes ${result.num_nodes} \n\n No. of Edges ${result.num_edges} \n\n DAG ${result.is_dag}`,
+      //   {
+      //     duration: 4000,
+      //   }
+      // );
+      // alert(
+      //   `Nodes: ${result.num_nodes}, Edges: ${result.num_edges}, Is DAG: ${result.is_dag}`
+      // );
     } catch (error) {
       console.error("Error submitting data:", error);
-      alert("Error submitting data");
+      toast.error("Error submitting data");
     }
   };
 
@@ -45,6 +55,7 @@ export const SubmitButton = () => {
           Submit
         </button>
       </div>
+      <Toaster />
     </div>
   );
 };

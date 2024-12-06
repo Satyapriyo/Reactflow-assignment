@@ -24,13 +24,13 @@ export const DraggableNode = ({ type, label }) => {
         display: "flex",
         alignItems: "center",
         borderRadius: "0.8rem",
-        
+
         justifyContent: "center",
         flexDirection: "column",
       }}
       draggable
     >
-      <span >{label}</span>
+      <span>{label}</span>
     </div>
   );
 };

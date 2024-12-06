@@ -10,6 +10,7 @@ import { InputNode } from "./nodes/inputNode";
 import { LLMNode } from "./nodes/llmNode";
 import { OutputNode } from "./nodes/outputNode";
 import { TextNode } from "./nodes/textNode";
+import { PaymentNode } from "./nodes/paymentNode";
 
 import "reactflow/dist/style.css";
 
@@ -20,6 +21,12 @@ const nodeTypes = {
   llm: LLMNode,
   customOutput: OutputNode,
   text: TextNode,
+  payment: PaymentNode,
+  gpay: PaymentNode,
+  wise: PaymentNode,
+  paypal: PaymentNode,
+  crypto: PaymentNode,
+  card: PaymentNode,
 };
 const selector = (state) => ({
   nodes: state.nodes,
