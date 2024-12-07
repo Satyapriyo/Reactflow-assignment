@@ -1,5 +1,8 @@
 # Reactflow assignment: React with FastAPI Backend
 
+![Recording 2024-12-07 110738](https://github.com/user-attachments/assets/b9d28923-18b7-4dd2-bf96-2ff980450249)
+
+
 This project is a full-stack application using Vite and React for the frontend and FastAPI for the backend. It includes a drag-and-drop UI for creating pipelines and a backend service to process these pipelines.
 
 ## Table of Contents
